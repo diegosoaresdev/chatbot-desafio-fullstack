@@ -16,6 +16,14 @@ Em ambientes de produção, chaves sensíveis devem ser gerenciadas via variáve
 
 ---
 
+## 🚀 Demonstração
+OBS: Observe que a API (Django) salvou as mensagens que foram enviadas anteriormente no banco de dados, vinculando-a corretamente ao usuário que a enviou! 
+
+![Design sem nome](https://github.com/user-attachments/assets/dafbbe20-7bfa-4ebe-b913-2bce44724644)
+
+
+---
+
 ## ✨ Features (Funcionalidades)
 
 - **Login Simulado**  
