@@ -108,49 +108,45 @@ No primeiro terminal:
 ```bash
 cd backend
 python -m venv venv
-Ativação do ambiente virtual:
+```
+
+Ativação do ambiente virtual
 
 Windows
+```venv\Scripts\activate```
 
-bash
-Copiar código
-venv\Scripts\activate
 Linux / Mac
+```source venv/bin/activate```
 
-bash
-Copiar código
-source venv/bin/activate
-Instalação das dependências:
-
-bash
-Copiar código
+Instale as dependências e execute o servidor
+```
 pip install django djangorestframework django-cors-headers
 python manage.py migrate
 python manage.py runserver
-✔ Servidor disponível em:
+```
+
+✔ Servidor rodando em:
 http://127.0.0.1:8000
 
 ▶ Passo 2: Frontend (Cliente)
+
 No segundo terminal:
+```cd frontend```
 
-bash
-Copiar código
-cd frontend
-Instalação:
-
-bash
-Copiar código
+Instalação e execução:
+```
 npm install
 npm start
+```
+
 ✔ Acesse no navegador:
 http://localhost:3000
 
 📡 Documentação da API
-Base URL:
 
-arduino
-Copiar código
+Base URL:
 http://127.0.0.1:8000/api
+
 📜 Rotas
 Método	Rota	Descrição	Payload / Params
 GET	/chat/	Busca histórico	user_identifier=A
