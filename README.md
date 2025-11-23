@@ -110,7 +110,7 @@ cd backend
 python -m venv venv
 ```
 
-Ativação do ambiente virtual
+Ativação do ambiente virtual:
 
 Windows
 ```venv\Scripts\activate```
@@ -118,7 +118,7 @@ Windows
 Linux / Mac
 ```source venv/bin/activate```
 
-Instale as dependências e execute o servidor
+Instale as dependências e execute o servidor:
 ```
 pip install django djangorestframework django-cors-headers
 python manage.py migrate
