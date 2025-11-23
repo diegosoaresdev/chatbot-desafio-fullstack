@@ -130,7 +130,7 @@ http://127.0.0.1:8000
 
 ---
 
-##▶ Passo 2: Frontend (Cliente)
+## ▶ Passo 2: Frontend (Cliente)
 
 No segundo terminal:
 ```cd frontend```
@@ -144,7 +144,7 @@ npm start
 ✔ Acesse no navegador:
 http://localhost:3000
 
-📡 Documentação da API
+## 📡 Documentação da API
 
 Base URL:
 http://127.0.0.1:8000/api
