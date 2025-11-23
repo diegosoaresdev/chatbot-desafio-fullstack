@@ -1,0 +1,61 @@
+--- PYTHON & DJANGO (Backend) ---
+
+pycache/
+*.py[cod]
+*$py.class
+*.so
+
+Ambientes Virtuais
+
+env/
+venv/
+.env
+.venv/
+
+Banco de Dados (SQLite)
+
+db.sqlite3
+db.sqlite3-journal
+
+Logs e Mídia
+
+*.log
+media/
+
+--- TESTES & QUALIDADE ---
+
+.coverage
+htmlcov/
+.pytest_cache/
+coverage.xml
+
+--- NODE & REACT (Frontend) ---
+
+node_modules/
+build/
+dist/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+Logs do NPM/Yarn
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+--- IDEs & EDITORES (Geral) ---
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+--- SISTEMA OPERACIONAL ---
+
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
