@@ -144,6 +144,8 @@ npm start
 ✔ Acesse no navegador:
 http://localhost:3000
 
+---
+
 ## 📡 Documentação da API
 
 Base URL:
