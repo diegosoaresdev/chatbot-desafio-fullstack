@@ -1,6 +1,6 @@
 💬 Chatbot de Atendimento Simulado
 
-Solução Full Stack desenvolvida para simular um sistema de atendimento inteligente. O projeto demonstra a integração entre um backend robusto em Django e um frontend interativo em React, focando em qualidade de código, organização de arquitetura e experiência do utilizador.
+Solução Full Stack desenvolvida para simular um sistema de atendimento inteligente. O projeto demonstra a integração entre um backend robusto em Django e um frontend interativo em React, focando em boas práticas de código, organização e clareza.
 
 🛠️ Tecnologias e Ferramentas
 
@@ -10,13 +10,13 @@ Python 3.10+: Linguagem base.
 
 Django & Django REST Framework: Framework para construção de uma API RESTful segura e escalável.
 
-SQLite: Banco de dados relacional.
+SQLite: Banco de dados relacional (escolhido pela portabilidade).
 
 Django CORS Headers: Gerenciamento de segurança entre origens.
 
 Frontend (Interface)
 
-React.js: Biblioteca para construção de interfaces.
+React.js: Biblioteca para construção de interfaces reativas.
 
 Axios: Cliente HTTP para comunicação com a API.
 
@@ -36,7 +36,7 @@ Git instalado.
 
 Passo 1: Configurar o Backend (Servidor)
 
-No primeiro terminal:
+No primeiro terminal, execute a sequência abaixo:
 
 1. Acesse a pasta do backend:
 
@@ -45,13 +45,13 @@ cd backend
 
 2. Crie e ative o ambiente virtual:
 
-No Windows:
+Windows:
 
 python -m venv venv
 venv\Scripts\activate
 
 
-No Linux/Mac:
+Linux/Mac:
 
 python3 -m venv venv
 source venv/bin/activate
@@ -101,7 +101,7 @@ Separei a aplicação em duas camadas (Client-Server). Isso simula um ambiente r
 
 Tipagem Forte: Uso de TextChoices no Django para evitar "strings mágicas" e erros de digitação.
 
-Lógica na View: Regra de negócio implementada diretamente na View de forma estruturada, evitando complexidade desnecessária para um MVP.
+Lógica na View: Regra de negócio implementada diretamente na View de forma estruturada, evitando complexidade desnecessária.
 
 3. Frontend (UX e Componentização)
 
