@@ -2,116 +2,111 @@
 
 Solução Full Stack desenvolvida para simular um sistema de atendimento inteligente. O projeto demonstra a integração entre um backend robusto em Django e um frontend interativo em React, focando em boas práticas de código, organização e clareza.
 
-🛠️ Tecnologias e Ferramentas
+✨ Features (Funcionalidades)
+
+Login Simulado: Alternância simples entre perfis (Usuário A e Usuário B) sem complexidade de autenticação.
+
+Feedback Visual: Interface reativa que exibe status de Carregando... e mensagens de erro (Modo Offline) caso a API falhe.
+
+Histórico Persistente: As mensagens são salvas no SQLite e recuperadas dinamicamente via requisições GET.
+
+Respostas Dinâmicas: O backend processa o user_identifier e retorna respostas personalizadas automaticamente.
+
+🛠 Tecnologias Utilizadas
 
 Backend (API)
 
-Python 3.10+: Linguagem base.
+Python 3.10+ (Linguagem Core)
 
-Django & Django REST Framework: Framework para construção de uma API RESTful segura e escalável.
+Django & Django REST Framework (Estrutura da API)
 
-SQLite: Banco de dados relacional (escolhido pela portabilidade).
+SQLite (Banco de dados padrão)
 
-Django CORS Headers: Gerenciamento de segurança entre origens.
+Django CORS Headers (Segurança entre origens)
 
 Frontend (Interface)
 
-React.js: Biblioteca para construção de interfaces reativas.
+React.js (Biblioteca de UI baseada em componentes)
 
-Axios: Cliente HTTP para comunicação com a API.
+Axios (Cliente HTTP para consumo de API)
 
-Tailwind CSS: Estilização rápida e responsiva.
+Tailwind CSS (Estilização utilitária e responsiva)
+
+📖 Principais Conceitos Aplicados
+
+Este projeto focou em aplicar fundamentos de arquitetura e código limpo.
+
+1. Consumo de API & Tratamento de Erros
+
+O frontend utiliza o Axios para comunicação assíncrona. O código implementa blocos try...catch...finally para:
+
+try: Tentar enviar/buscar mensagens.
+
+catch: Capturar falhas de conexão e ativar o Modo Offline (simulação).
+
+finally: Garantir que o estado de loading seja desativado independente do sucesso ou falha.
+
+2. Backend: Princípio KISS (Keep It Simple, Stupid)
+
+Tipagem Forte: Uso de TextChoices nos Models do Django para evitar "strings mágicas".
+
+Lógica na View: A regra de negócio (if user == VIP) foi implementada diretamente na View de forma estruturada, evitando overengineering.
+
+3. Componentização (React)
+
+A interface foi quebrada em sub-componentes funcionais para melhor legibilidade:
+
+<LoginScreen />: Gerencia a seleção inicial de perfil.
+
+<MessageItem />: Renderiza os balões de mensagem individuais.
 
 🚀 Como Executar o Projeto
 
-Siga os passos abaixo para rodar a aplicação. Você precisará de dois terminais abertos.
+Siga os passos abaixo para rodar a aplicação localmente.
 
 Pré-requisitos
 
-Python instalado.
+Certifique-se de ter instalado: Python, Node.js e Git.
 
-Node.js e NPM instalados.
+Passo 1: Backend (Servidor)
 
-Git instalado.
+No primeiro terminal:
 
-Passo 1: Configurar o Backend (Servidor)
-
-No primeiro terminal, execute a sequência abaixo:
-
-1. Acesse a pasta do backend:
+1. Acesse a pasta e crie o ambiente virtual:
 
 cd backend
-
-
-2. Crie e ative o ambiente virtual:
-
-Windows:
-
 python -m venv venv
+# Windows:
 venv\Scripts\activate
-
-
-Linux/Mac:
-
-python3 -m venv venv
+# Linux/Mac:
 source venv/bin/activate
 
 
-3. Instale as dependências:
+2. Instale as dependências e inicie:
 
 pip install django djangorestframework django-cors-headers
-
-
-4. Inicie o servidor:
-
 python manage.py migrate
 python manage.py runserver
 
 
-✅ O servidor estará rodando em: http://127.0.0.1:8000
+✅ O servidor rodará em: http://127.0.0.1:8000
 
-Passo 2: Configurar o Frontend (Cliente)
+Passo 2: Frontend (Cliente)
 
 No segundo terminal:
 
-1. Acesse a pasta do frontend:
+1. Acesse a pasta e instale pacotes:
 
 cd frontend
-
-
-2. Instale as dependências:
-
 npm install
 
 
-3. Inicie a aplicação:
+2. Execute o projeto:
 
 npm start
 
 
 ✅ Acesse no navegador: http://localhost:3000
-
-🧠 Decisões Técnicas
-
-1. Arquitetura Desacoplada
-
-Separei a aplicação em duas camadas (Client-Server). Isso simula um ambiente real, facilita testes e permite escalabilidade futura.
-
-2. Backend (KISS Principle)
-
-Tipagem Forte: Uso de TextChoices no Django para evitar "strings mágicas" e erros de digitação.
-
-Lógica na View: Regra de negócio implementada diretamente na View de forma estruturada, evitando complexidade desnecessária.
-
-3. Frontend (UX e Componentização)
-
-Componentes: Interface quebrada em LoginScreen e MessageItem para melhor legibilidade.
-
-Resiliência: Implementação de um "Modo Offline" que simula respostas caso o backend caia, garantindo que a interface nunca quebre.
-
-4. Banco de Dados
-
-Uso do SQLite pela portabilidade, permitindo rodar o projeto sem configurações complexas de ambiente.
 
 📡 Documentação da API
 
@@ -123,13 +118,13 @@ Rota
 
 Descrição
 
-Exemplo
+Payload / Params
 
 GET
 
 /chat/
 
-Busca histórico.
+Busca histórico do usuário.
 
 ?user_identifier=A
 
@@ -137,6 +132,6 @@ POST
 
 /chat/
 
-Envia mensagem.
+Envia mensagem nova.
 
-{ "user_identifier": "A", "content": "Olá" }
+{ "user_identifier": "A", "content": "Texto" }
