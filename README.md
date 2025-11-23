@@ -128,6 +128,8 @@ python manage.py runserver
 ✔ Servidor rodando em:
 http://127.0.0.1:8000
 
+---
+
 ##▶ Passo 2: Frontend (Cliente)
 
 No segundo terminal:
