@@ -1,16 +1,18 @@
 💬 Chatbot de Atendimento Simulado
 
-Solução Full Stack desenvolvida para simular um sistema de atendimento inteligente. O projeto demonstra a integração entre um backend robusto em Django e um frontend interativo em React, focando em boas práticas de código, organização e clareza.
+Solução Full Stack desenvolvida para simular um sistema de atendimento inteligente. O projeto demonstra a integração entre um backend robusto em Django e um frontend interativo em React, focando em boas práticas de código ("Clean Code"), arquitetura desacoplada e experiência do utilizador (UX).
+
+Nota de Segurança: A SECRET_KEY foi mantida no arquivo settings.py intencionalmente para facilitar a execução local e avaliação do projeto. Em um ambiente de produção real, chaves sensíveis seriam gerenciadas estritamente através de variáveis de ambiente (.env).
 
 ✨ Features (Funcionalidades)
 
-Login Simulado: Alternância simples entre perfis (Usuário A e Usuário B) sem complexidade de autenticação.
+Login Simulado: Alternância fluida entre perfis (Usuário A e Usuário B) utilizando renderização condicional, sem a complexidade de autenticação real.
 
-Feedback Visual: Interface reativa que exibe status de Carregando... e mensagens de erro (Modo Offline) caso a API falhe.
+Feedback Visual & Resiliência: Interface reativa que exibe status de carregamento e implementa um Modo Offline automático caso a conexão com a API falhe.
 
-Histórico Persistente: As mensagens são salvas no SQLite e recuperadas dinamicamente via requisições GET.
+Histórico Persistente: As mensagens são persistidas no banco de dados SQLite e recuperadas dinamicamente via requisições GET, garantindo integridade dos dados.
 
-Respostas Dinâmicas: O backend processa o user_identifier e retorna respostas personalizadas automaticamente.
+Lógica de Resposta Dinâmica: O backend processa o identificador do usuário e gera respostas personalizadas baseadas no perfil (VIP vs Padrão).
 
 🛠 Tecnologias Utilizadas
 
@@ -18,51 +20,51 @@ Backend (API)
 
 Python 3.10+ (Linguagem Core)
 
-Django & Django REST Framework (Estrutura da API)
+Django & Django REST Framework (Construção de API RESTful)
 
-SQLite (Banco de dados padrão)
+SQLite (Banco de dados relacional pela portabilidade)
 
-Django CORS Headers (Segurança entre origens)
+Django CORS Headers (Gerenciamento de segurança entre origens)
 
 Frontend (Interface)
 
-React.js (Biblioteca de UI baseada em componentes)
+React.js (Biblioteca de UI baseada em componentes funcionais)
 
-Axios (Cliente HTTP para consumo de API)
+Axios (Cliente HTTP Promise-based para consumo de API)
 
-Tailwind CSS (Estilização utilitária e responsiva)
+Tailwind CSS (Estilização utilitária para design responsivo e moderno)
 
-📖 Principais Conceitos Aplicados
+🧠 Decisões Técnicas e Arquitetura
 
-Este projeto focou em aplicar fundamentos de arquitetura e código limpo.
+O desenvolvimento deste projeto foi guiado por princípios de Simplicidade (KISS) e Manutenibilidade. Abaixo detalho as escolhas arquiteturais:
 
-1. Consumo de API & Tratamento de Erros
+1. Estrutura de Dados e Models (Django)
 
-O frontend utiliza o Axios para comunicação assíncrona. O código implementa blocos try...catch...finally para:
+Optei por utilizar TextChoices para o campo user_identifier no model Message.
 
-try: Tentar enviar/buscar mensagens.
+Por quê? Isso evita o uso de "strings mágicas" (como 'A' ou 'B' soltos no código). Centralizar essas opções no Model garante integridade de dados e facilita a manutenção caso os tipos de usuários mudem no futuro.
 
-catch: Capturar falhas de conexão e ativar o Modo Offline (simulação).
+2. Gerenciamento de Estado (React)
 
-finally: Garantir que o estado de loading seja desativado independente do sucesso ou falha.
+Escolhi utilizar apenas os hooks nativos (useState, useEffect) em vez de bibliotecas complexas como Redux ou Context API.
 
-2. Backend: Princípio KISS (Keep It Simple, Stupid)
+Por quê? Para o escopo deste desafio, introduzir Redux seria "overengineering". O estado local é suficiente para gerenciar o fluxo de currentUser, inputs de chat e histórico, mantendo o bundle leve e o código legível.
 
-Tipagem Forte: Uso de TextChoices nos Models do Django para evitar "strings mágicas".
+3. Lógica de Negócio (Backend)
 
-Lógica na View: A regra de negócio (if user == VIP) foi implementada diretamente na View de forma estruturada, evitando overengineering.
+A regra de decisão da resposta do bot ("Se VIP, responda X") foi implementada diretamente na View.
 
-3. Componentização (React)
+Por quê? Embora em sistemas grandes se use uma camada de Services, para este MVP a implementação direta na View reduz a complexidade cognitiva e facilita a leitura do fluxo de dados pelo avaliador.
 
-A interface foi quebrada em sub-componentes funcionais para melhor legibilidade:
+4. Componentização (Frontend)
 
-<LoginScreen />: Gerencia a seleção inicial de perfil.
+A interface foi refatorada em sub-componentes funcionais (LoginScreen, MessageItem).
 
-<MessageItem />: Renderiza os balões de mensagem individuais.
+Por quê? Segue o princípio de responsabilidade única do React. Isso isola a lógica de apresentação da lógica de estado, tornando o componente principal App.js mais limpo e focado na integração com a API.
 
 🚀 Como Executar o Projeto
 
-Siga os passos abaixo para rodar a aplicação localmente.
+Siga os passos abaixo para rodar a aplicação em seu ambiente local.
 
 Pré-requisitos
 
@@ -82,7 +84,7 @@ venv\Scripts\activate
 source venv/bin/activate
 
 
-2. Instale as dependências e inicie:
+2. Instale as dependências e inicie o servidor:
 
 pip install django djangorestframework django-cors-headers
 python manage.py migrate
@@ -95,14 +97,14 @@ Passo 2: Frontend (Cliente)
 
 No segundo terminal:
 
-1. Acesse a pasta e instale pacotes:
+1. Acesse a pasta do frontend:
 
 cd frontend
+
+
+2. Instale os pacotes e execute:
+
 npm install
-
-
-2. Execute o projeto:
-
 npm start
 
 
